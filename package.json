@@ -1,0 +1,22 @@
+{
+  "name": "actividadfinal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyau60379/ActividadFinal.git"
+  },
+  "author": "Cyril Aubourg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cyau60379/ActividadFinal/issues"
+  },
+  "homepage": "https://github.com/cyau60379/ActividadFinal#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
