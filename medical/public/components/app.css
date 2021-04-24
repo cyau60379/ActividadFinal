@@ -1,0 +1,53 @@
+.saludNavbar md-content .ext-content {
+    padding: 50px;
+    margin: 20px;
+    background-color: #FFF2E0;
+}
+
+._md-nav-bar-list {
+    justify-content: space-between;
+}
+
+.md-nav-bar {
+    height: auto;
+}
+
+.md-button {
+    padding: 0;
+    margin: 0 8px;
+}
+
+.icon {
+    margin: 0;
+    width: 100px;
+    height: 50px;
+}
+
+.icon md-progress-circular {
+    margin-bottom: 20px;
+}
+
+.icon .demo-content {
+    min-height: 210px;
+}
+
+.icon .appUsingTemplateCache {
+    padding: 25px;
+}
+
+.icon .note {
+    font-size: 12px;
+    display: block;
+    margin-top: -2px;
+    padding-left: 25px;
+    color: #7f7e7e;
+}
+
+md-nav-bar.md-default-theme md-nav-ink-bar, md-nav-bar md-nav-ink-bar {
+    color: rgb(4, 188, 0);
+    background: rgb(4, 188, 0);
+}
+
+.md-button.md-default-theme.md-accent, .md-button.md-accent {
+    color: rgb(4, 188, 0);
+}
