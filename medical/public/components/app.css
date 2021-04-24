@@ -12,7 +12,7 @@
     height: auto;
 }
 
-.md-button {
+.header {
     padding: 0;
     margin: 0 8px;
 }
@@ -50,4 +50,14 @@ md-nav-bar.md-default-theme md-nav-ink-bar, md-nav-bar md-nav-ink-bar {
 
 .md-button.md-default-theme.md-accent, .md-button.md-accent {
     color: rgb(4, 188, 0);
+}
+
+.appForm {
+    width: 500px;
+    margin: 50px auto;
+}
+
+.md-button.md-primary.md-raised {
+    color: rgb(255, 255, 255);
+    background: rgb(4, 188, 0);
 }

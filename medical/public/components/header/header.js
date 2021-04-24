@@ -14,12 +14,6 @@ function headerController($scope, $element, $attrs) {
         }
     }
 
-    ctrl.update = function (movie, rating) {
-        ctrl.onUpdate({movie: movie, rating: rating});
-    }
-
-    $scope.currentNavItem = 'page1';
-
     $scope.goto = function (page) {
         $scope.status = "Goto " + page;
     };
