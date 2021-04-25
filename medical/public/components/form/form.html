@@ -1,9 +1,9 @@
-<form class="appForm">
+<form name="appForm" class="appForm">
     <span class="md-headline">{{$ctrl.ftype | uppercase}} FORM</span>
     <div layout-gt-xs="row" ng-repeat="formElement in $ctrl.inputs">
         <md-input-container class="md-block" flex-gt-xs>
             <label>{{formElement.name | uppercase}}</label>
-            <input type="{{formElement.type}}" name="{{formElement.name}}">
+            <input required md-no-asterisk type="{{formElement.type}}" name="{{formElement.name}}">
         </md-input-container>
     </div>
     <div style="text-align: end;">

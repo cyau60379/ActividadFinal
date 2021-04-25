@@ -2,11 +2,13 @@ function formController($scope, $element, $attrs) {
     var ctrl = this;
 
     ctrl.inputs = [];
+    ctrl.changeForm = false;
 
     ctrl.$onInit = function () {
         if (ctrl.ftype == "connection") {
             ctrl.inputs.push({name: "email", type: "email"});
             ctrl.inputs.push({name: "password", type: "password"});
+            ctrl.changeForm = true;
         } else if (ctrl.ftype == "inscription") {
             ctrl.inputs.push({name: "name", type: "text"});
             ctrl.inputs.push({name: "surname", type: "text"});

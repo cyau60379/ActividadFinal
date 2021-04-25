@@ -12,6 +12,18 @@
     height: auto;
 }
 
+.navigator {
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 10000;
+}
+
+.hiddenDiv {
+    height: 50px;
+}
+
 .header {
     padding: 0;
     margin: 0 8px;
