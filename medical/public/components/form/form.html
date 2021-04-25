@@ -7,6 +7,7 @@
         </md-input-container>
     </div>
     <div style="text-align: end;">
-        <md-button class="md-raised md-primary" ng-click='$ctrl.sendData(ctrl.movie, rating, $event)'>{{$ctrl.ftype}}</md-button>
+        <md-button ng-click='$ctrl.change()'>{{$ctrl.button}}</md-button>
+        <md-button class="md-raised md-primary" ng-click='$ctrl.sendData("")'>{{$ctrl.ftype}}</md-button>
     </div>
 </form>
