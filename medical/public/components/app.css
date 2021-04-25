@@ -73,3 +73,13 @@ md-nav-bar.md-default-theme md-nav-ink-bar, md-nav-bar md-nav-ink-bar {
     color: rgb(255, 255, 255);
     background: rgb(4, 188, 0);
 }
+
+.md-button.md-raised[disabled] {
+    background-color: rgba(0,0,0,0.12);
+}
+
+.error md-input-container > p {
+    font-size: 0.8em;
+    text-align: left;
+    width: 100%;
+}
