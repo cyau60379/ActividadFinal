@@ -1,4 +1,4 @@
-function formController($scope, $element, $attrs) {
+function formController($scope, $http, $mdDialog, $window) {
     var ctrl = this;
 
     ctrl.inputs = [];
@@ -61,15 +61,38 @@ function formController($scope, $element, $attrs) {
         }
     }
 
-    ctrl.sendData = function (sender) {
+    ctrl.showAlert = function (type, ev) {
+        $mdDialog.show(
+            $mdDialog.alert()
+                .parent(angular.element(document.querySelector('#popupContainer')))
+                .clickOutsideToClose(true)
+                .title(type + ' failed')
+                .textContent('Wrong data')
+                .ariaLabel('Alert')
+                .ok('Return')
+                .targetEvent(ev)
+        );
+    };
+
+    ctrl.sendData = function ($event) {
         switch (ctrl.ftype) {
             case "connection":
-                let email = $scope.datos.email;
-                let password = $scope.datos.password;
-                // TODO: use $http to send to the verification function + change page
+                $http.post("/connection", JSON.stringify({
+                    email: $scope.datos.email,
+                    password: $scope.datos.password
+                }))
+                    .then(function (response) {
+                        if (response.data === "wrong") {
+                            ctrl.showAlert(ctrl.ftype, $event);
+                        } else {
+                            $window.location.href = response.data.redirect;
+                        }
+                    }, function (response) {
+                        ctrl.showAlert(ctrl.ftype, $event);
+                    });
                 break;
             case "inscription":
-                // TODO: use $http to register the new patient + change page
+            // TODO: use $http to register the new patient + change page
         }
     }
 

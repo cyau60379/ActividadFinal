@@ -7,7 +7,7 @@ var EnfermedadUsuario = new Schema(
         nombre: {type: String, required: true, maxlength: 100},
         duracion: {type: Number, required: true},
         sintomas: [{type: String, maxlength: 200}],
-        imagenes: [{type: File}],
+        imagenes: [{type: Object}],
         fecha: {type: Date, required: true, default: Date.now()},
         paciente: {type: Schema.Types.ObjectId, ref: 'Usuario', required: true}
     }
