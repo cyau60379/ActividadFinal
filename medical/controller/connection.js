@@ -1,5 +1,6 @@
 var User = require('../model/usuario');
 var Tipo = require('../model/tipo');
+var Area = require('../model/area');
 var sha256 = require('js-sha256').sha256;
 
 exports.index = function (req, res, next) {
@@ -52,8 +53,34 @@ exports.connection = function (req, res, next) {
 exports.inscription = function (req, res, next) {
     var hashedMail = encrypt(req.body.email);
     var hashedPwd = encrypt(req.body.password);
-
-    // TODO: Add data to DB (+ hashes)
+    Tipo.find({'nombre': 'paciente'}).exec(function (err, tipo) {
+        if (err)
+            return next(err);
+        Area.find({'nombre': 'void'}).exec(function (err2, area) {
+            if (err2)
+                return next(err2);
+            var newUser = {
+                email: hashedMail,
+                password: hashedPwd,
+                nombre: req.body.name,
+                apellido: req.body.surname,
+                edad: req.body.age,
+                sexo: req.body.sex,
+                domicilio: req.body.address,
+                ciudad: req.body.city,
+                tipo: tipo[0]._id,
+                areaMedica: area[0]._id,
+                connectado: false
+            }
+            User.create(newUser, function(err, result) {
+                console.log(result);
+                req.session.user = hashedMail;
+                req.session.type = 'paciente';
+                req.session.page = 'homePaciente';
+                res.send({redirect: '/home'});
+            });
+        });
+    });
 }
 
 function encrypt(element) {

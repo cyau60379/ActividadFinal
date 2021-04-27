@@ -21,6 +21,7 @@ function formController($scope, $http, $mdDialog, $window) {
                 ctrl.inputs.push({name: "confirmation", type: "password"});
                 ctrl.inputs.push({name: "name", type: "text"});
                 ctrl.inputs.push({name: "surname", type: "text"});
+                ctrl.inputs.push({name: "sex", type: "text"});
                 ctrl.inputs.push({name: "age", type: "number"});
                 ctrl.inputs.push({name: "address", type: "text"});
                 ctrl.inputs.push({name: "city", type: "text"});
@@ -53,7 +54,9 @@ function formController($scope, $http, $mdDialog, $window) {
                     || typeof $scope.datos.password == 'undefined'
                     || typeof $scope.datos.confirmation == 'undefined'
                     || typeof $scope.datos.email == 'undefined'
+                    || typeof $scope.datos.sex == 'undefined'
                     || $scope.datos.password.length < 8
+                    || $scope.datos.sex.length > 1
                     || $scope.datos.password !== $scope.datos.confirmation) {
                     $scope.enabled = false;
                 } else $scope.enabled = $scope.datos.email.match(mailformat);
@@ -93,6 +96,26 @@ function formController($scope, $http, $mdDialog, $window) {
                 break;
             case "inscription":
             // TODO: use $http to register the new patient + change page
+                $http.post("/inscription", JSON.stringify({
+                    email: $scope.datos.email,
+                    password: $scope.datos.password,
+                    name: $scope.datos.name,
+                    surname: $scope.datos.surname,
+                    sex: $scope.datos.sex,
+                    age: $scope.datos.age,
+                    address: $scope.datos.address,
+                    city: $scope.datos.city
+                }))
+                    .then(function (response) {
+                        if (response.data === "wrong") {
+                            ctrl.showAlert(ctrl.ftype, $event);
+                        } else {
+                            $window.location.href = response.data.redirect;
+                        }
+                    }, function (response) {
+                        ctrl.showAlert(ctrl.ftype, $event);
+                    });
+                break;
         }
     }
 

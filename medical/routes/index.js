@@ -13,6 +13,9 @@ router.get('/', connection.verificationSession, connection.index);
 /* POST connect the user */
 router.post('/connection', jsonParser, connection.connection);
 
+/* POST sign up the user */
+router.post('/inscription', jsonParser, connection.inscription);
+
 /* GET home page */
 router.get('/home', connection.verificationSession, home.welcome);
 
