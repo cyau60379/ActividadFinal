@@ -1,4 +1,24 @@
-extends layout
+doctype html
+html
+  head
+    title= "Tu Salud"
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-aria.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-messages.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/angular_material/1.2.1/angular-material.min.js")
+    link(rel='stylesheet', href='https://ajax.googleapis.com/ajax/libs/angular_material/1.2.1/angular-material.min.css')
+    script(src="components/app.js")
+    script(src="components/header/header.js")
+    script(src="components/form/form.js")
+    script(src="components/dynamicForm/dynamicForm.js")
+    script(src="components/sidebar/sidebar.js")
+    link(rel='stylesheet', href='components/app.css')
+    link(rel="icon" href="images/logo.svg")
+  body(ng-app="componentApp")
 
-block content
-  form-app(ftype= "connection")
+  header-app(usertype= user, page= currentpage)
+  div
+    form-app(ftype= "connection")

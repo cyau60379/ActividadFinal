@@ -13,11 +13,13 @@ html
         script(src="components/app.js")
         script(src="components/header/header.js")
         script(src="components/form/form.js")
+        script(src="components/dynamicForm/dynamicForm.js")
         script(src="components/sidebar/sidebar.js")
         link(rel='stylesheet', href='components/app.css')
         link(rel="icon" href="images/logo.svg")
     body(ng-app="componentApp")
 
     header-app(usertype= user, page= currentpage)
-    div
+    div(class="principal")
+        sidebar(name= username)
         block content

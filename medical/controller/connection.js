@@ -17,7 +17,7 @@ exports.connection = function (req, res, next) {
     var hashedMail = encrypt(req.body.email);
     var hashedPwd = encrypt(req.body.password);
     var query = User.find({'email': hashedMail});
-    query.select('email password tipo');
+    query.select('email password nombre apellido tipo');
     query.limit(1);
     query.exec(function (err, user) {
         if (err)
@@ -26,9 +26,9 @@ exports.connection = function (req, res, next) {
             if (compare(hashedPwd, user[0].password)) {
                 Tipo.find({'_id': user[0].tipo}).exec(function (err, tipo) {
                     req.session.user = hashedMail;
+                    req.session.email = req.body.email;
+                    req.session.name = user[0].nombre + " " + user[0].apellido;
                     req.session.type = tipo[0].nombre;
-                    console.log(tipo[0].nombre);
-                    req.session.page = 'home' + req.session.type.charAt(0).toUpperCase() + req.session.type.slice(1);
                     res.send({redirect: '/home'});
                 });
             } else {
@@ -67,11 +67,39 @@ exports.inscription = function (req, res, next) {
             User.create(newUser, function(err, result) {
                 console.log(result);
                 req.session.user = hashedMail;
+                req.session.email = req.body.email;
+                req.session.name = req.body.name + " " + req.body.surname;
                 req.session.type = 'paciente';
                 req.session.page = 'homePaciente';
                 res.send({redirect: '/home'});
             });
         });
+    });
+}
+
+exports.update = function (req, res, next) {
+    var hashedMail = encrypt(req.body.email);
+    var hashedPwd = encrypt(req.body.password);
+    var newUser = {
+        email: hashedMail,
+        password: hashedPwd,
+        nombre: req.body.name,
+        apellido: req.body.surname,
+        edad: req.body.age,
+        sexo: req.body.sex,
+        domicilio: req.body.address,
+        ciudad: req.body.city
+    }
+
+    User.updateOne({email: req.session.user}, {$set: newUser}, function(err, result) {
+        if (err) {
+            res.send("wrong");
+        } else {
+            req.session.user = hashedMail;
+            req.session.email = req.body.email;
+            req.session.name = req.body.name + " " + req.body.surname;
+            res.end();
+        }
     });
 }
 

@@ -25,6 +25,7 @@ function sidebarController($scope, $mdSidenav, $http, $window) {
 
 componentApp.component("sidebar", {
     bindings: {
+        name: '@'
     },
     templateUrl: "components/sidebar/sidebar.html",
     controller: sidebarController

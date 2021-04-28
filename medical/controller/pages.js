@@ -7,20 +7,21 @@ exports.index = function (req, res, next) {
 };
 
 exports.welcome = function (req, res, next) {
-    res.render(req.session.page, {user: req.session.type, currentpage: req.session.page});
+    req.session.page = 'home' + req.session.type.charAt(0).toUpperCase() + req.session.type.slice(1);
+    res.render(req.session.page, {user: req.session.type, currentpage: req.session.page, username: req.session.name});
 };
 
 exports.cuenta = function (req, res, next) {
     req.session.page = 'cuenta';
-    res.render(req.session.page, {user: req.session.type, currentpage: req.session.page});
+    res.render(req.session.page, {user: req.session.type, currentpage: req.session.page, username: req.session.name});
 };
 
 exports.peticion = function (req, res, next) {
     req.session.page = 'peticion';
-    res.render(req.session.page, {user: req.session.type, currentpage: req.session.page});
+    res.render(req.session.page, {user: req.session.type, currentpage: req.session.page, username: req.session.name});
 };
 
 exports.respuesta = function (req, res, next) {
     req.session.page = 'respuesta';
-    res.render(req.session.page, {user: req.session.type, currentpage: req.session.page});
+    res.render(req.session.page, {user: req.session.type, currentpage: req.session.page, username: req.session.name});
 };

@@ -1,0 +1,19 @@
+<form name="appForm" class="appForm">
+    <span class="md-headline" ng-if="updating">{{$ctrl.ftype | uppercase}} FORM</span>
+    <span class="md-headline" ng-if="!updating">INFORMATION</span>
+    <div layout-gt-xs="row" ng-repeat="formElement in $ctrl.inputs">
+        <md-input-container ng-if="updating" class="md-block" flex-gt-xs>
+            <label>{{formElement.name | uppercase}}</label>
+            <input ng-required="true" min="0" md-no-asterisk type="{{formElement.type}}" ng-model="datos[formElement.name]" name="{{formElement.name}}" value="{{formElement.value}}" ng-keyup="$ctrl.enableButton()">
+        </md-input-container>
+        <md-input-container ng-if="!updating" class="md-block" flex-gt-xs>
+            <label>{{formElement.name | uppercase}}</label>
+            <input disabled min="0" md-no-asterisk type="{{formElement.type}}" ng-model="datos[formElement.name]" name="{{formElement.name}}" value="{{formElement.value}}">
+        </md-input-container>
+    </div>
+    <div style="text-align: end;">
+        <md-button ng-if="!updating" ng-click='$ctrl.change()'>{{$ctrl.button}}</md-button>
+        <md-button ng-if="updating" ng-click='$ctrl.change()'>cancel</md-button>
+        <md-button ng-if="updating" ng-disabled="!enabled" class="md-raised md-primary" ng-click='$ctrl.sendData($event)'>{{$ctrl.ftype}}</md-button>
+    </div>
+</form>

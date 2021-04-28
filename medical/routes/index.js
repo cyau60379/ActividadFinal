@@ -6,6 +6,7 @@ var jsonParser = bodyParser.json();
 // Require controller module.
 var connection = require('../controller/connection');
 var page = require('../controller/pages');
+var user = require('../controller/user');
 
 /* GET home page */
 router.get('/', connection.verificationSession, page.index);
@@ -15,6 +16,12 @@ router.post('/connection', jsonParser, connection.connection);
 
 /* POST sign up the user */
 router.post('/inscription', jsonParser, connection.inscription);
+
+/* POST update the user */
+router.post('/update', jsonParser, connection.verificationSession, connection.update);
+
+/* POST update the user */
+router.post('/getInfo', jsonParser, connection.verificationSession, user.getInfo);
 
 /* POST sign up the user */
 router.post('/signout', jsonParser, connection.signOut);
