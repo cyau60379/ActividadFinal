@@ -75,6 +75,11 @@ exports.inscription = function (req, res, next) {
     });
 }
 
+exports.signOut = function (req, res, next) {
+    req.session.destroy();
+    res.send({redirect: '/'});
+}
+
 function encrypt(element) {
     var hash = sha256.create();
     try {

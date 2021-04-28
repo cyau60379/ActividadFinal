@@ -1,0 +1,22 @@
+<md-button ng-click="$ctrl.toggleBar()" class="md-raised md-primary menu">
+    <md-icon md-svg-src="right-arrow"></md-icon>
+</md-button>
+<md-sidenav class="md-sidenav-left" md-component-id="menuButton"
+            md-whiteframe="4" md-disable-close-events>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h1 class="md-toolbar-tools">Cuenta</h1>
+            <md-button ng-click="$ctrl.toggleBar()" class="md-raised md-primary menu">
+                <md-icon md-svg-src="left-arrow"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content layout-margin="">
+        <p>
+            ¿Dejar la sesion?
+        </p>
+        <md-button ng-click="$ctrl.signOut()" class="sign-out md-raised md-primary">
+            Deconxion
+        </md-button>
+    </md-content>
+</md-sidenav>

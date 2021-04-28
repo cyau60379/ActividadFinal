@@ -16,6 +16,9 @@ router.post('/connection', jsonParser, connection.connection);
 /* POST sign up the user */
 router.post('/inscription', jsonParser, connection.inscription);
 
+/* POST sign up the user */
+router.post('/signout', jsonParser, connection.signOut);
+
 /* GET home page */
 router.get('/home', connection.verificationSession, page.welcome);
 
