@@ -3,14 +3,6 @@ var Tipo = require('../model/tipo');
 var Area = require('../model/area');
 var sha256 = require('js-sha256').sha256;
 
-exports.index = function (req, res, next) {
-    if (!req.session.user) {
-        res.render(req.session.page, {user: ''});
-    } else {
-        res.redirect('/home');
-    }
-};
-
 exports.verificationSession = function (req, res, next) {
     if (!req.session.user) { // No user set with the current session
         req.session.page = 'index';  // Go to connection page

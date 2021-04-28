@@ -1,26 +1,28 @@
-function headerController($scope, $element, $attrs) {
+function headerController($scope, $window) {
     var ctrl = this;
 
     ctrl.pages = [];
 
     ctrl.$onInit = function () {
-        if (ctrl.page == "paciente") {
+        if (ctrl.usertype == "paciente") {
             ctrl.pages.push("cuenta");
             ctrl.pages.push("peticion");
             ctrl.pages.push("respuesta");
-        } else if (ctrl.page == "medico") {
+        } else if (ctrl.usertype == "medico") {
             ctrl.pages.push("cuenta");
             ctrl.pages.push("consulta");
         }
+        $scope.currentNavItem = ctrl.page;
     }
 
-    $scope.goto = function (page) {
-        $scope.status = "Goto " + page;
+    ctrl.goto = function (page) {
+        $window.location.href = "/" + page;
     };
 }
 
 componentApp.component("headerApp", {
     bindings: {
+        usertype: '@',
         page: '@'
     },
     templateUrl: "components/header/header.html",

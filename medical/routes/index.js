@@ -5,10 +5,10 @@ var jsonParser = bodyParser.json();
 
 // Require controller module.
 var connection = require('../controller/connection');
-var home = require('../controller/home');
+var page = require('../controller/pages');
 
 /* GET home page */
-router.get('/', connection.verificationSession, connection.index);
+router.get('/', connection.verificationSession, page.index);
 
 /* POST connect the user */
 router.post('/connection', jsonParser, connection.connection);
@@ -17,6 +17,15 @@ router.post('/connection', jsonParser, connection.connection);
 router.post('/inscription', jsonParser, connection.inscription);
 
 /* GET home page */
-router.get('/home', connection.verificationSession, home.welcome);
+router.get('/home', connection.verificationSession, page.welcome);
+
+/* GET account page */
+router.get('/cuenta', connection.verificationSession, page.cuenta);
+
+/* GET request page */
+router.get('/peticion', connection.verificationSession, page.peticion);
+
+/* GET response page */
+router.get('/respuesta', connection.verificationSession, page.respuesta);
 
 module.exports = router;
