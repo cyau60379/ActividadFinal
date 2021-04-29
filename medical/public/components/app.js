@@ -6,13 +6,15 @@ componentApp.config(function ($mdIconProvider) {
     $mdIconProvider
         .icon('logo', 'images/logo.svg', 50)
         .icon('left-arrow', 'images/left.svg', 50)
-        .icon('right-arrow', 'images/right.svg', 50);
+        .icon('right-arrow', 'images/right.svg', 50)
+        .icon('doc', 'images/doc.svg', 50);
 })
     .run(function ($templateRequest) {
         var urls = [
             'images/logo.svg',
             'images/left.svg',
             'images/right.svg',
+            'images/doc.svg',
         ];
 
         // Pre-fetch icons sources by URL and cache in the $templateCache...

@@ -111,3 +111,14 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 .margin-auto {
     margin: auto;
 }
+
+.table-content {
+    width: 60vw;
+}
+
+.table-item {
+    box-shadow: 0 0 5px 1px rgba(0,0,0,.26);
+    width: 80%;
+    margin: auto;
+    border: solid thin rgba(0,0,0,0.12);
+}

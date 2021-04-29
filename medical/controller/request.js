@@ -15,12 +15,13 @@ exports.request = function (req, res, next) {
         for (let i = 0; i < Object.keys(files).length; i++) {
             var oldPath = files[Object.keys(files)[i]].path;
             var today = new Date();
-            var date = today.getFullYear() + "" + today.getMonth() + "" + today.getDate();
+            var date = today.getFullYear() + "" + (today.getMonth() + 1) + "" + today.getDate();
             var ext = files[Object.keys(files)[i]].name.split(".")[1];
+            var relativePath = 'images/uploads/' + req.session.user + "_" + date + "_" + data.disease + "." + ext;
             var newPath = path.join(__dirname, '../public/images/uploads/') + req.session.user + "_" + date + "_" + data.disease + "." + ext;
             var rawData = fs.readFileSync(oldPath);
             fs.writeFileSync(newPath, rawData);
-            images.push(newPath);
+            images.push(relativePath);
         }
 
         User.find({'email': req.session.user}).exec(function (err, user) {
@@ -41,7 +42,7 @@ exports.request = function (req, res, next) {
             }
             Disease.create(newDisease, function(err, result) {
                 console.log(result);
-                res.end();
+                res.send({redirect: '/respuesta'});
             });
         });
     });

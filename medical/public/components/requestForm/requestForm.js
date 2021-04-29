@@ -60,6 +60,21 @@ function requestFormController($scope, $http, $mdDialog, $window) {
         );
     };
 
+    ctrl.showAlertRedirect = function (title, content, redirect, ev) {
+        $mdDialog.show(
+            $mdDialog.alert()
+                .parent(angular.element(document.querySelector('#popupContainer')))
+                .clickOutsideToClose(true)
+                .title(title)
+                .textContent(content)
+                .ariaLabel('Alert')
+                .ok('Return')
+                .targetEvent(ev)
+        ).then(function () {
+            $window.location.href = redirect;
+        });
+    };
+
     ctrl.sendData = function ($event) {
         var formInfo = new FormData();
         var data = {
@@ -80,7 +95,7 @@ function requestFormController($scope, $http, $mdDialog, $window) {
                 if (response.data === "wrong") {
                     ctrl.showAlert("Error", "Unable to send your request. Please come later", $event);
                 } else {
-                    ctrl.showAlert("Request", "Done", $event);
+                    ctrl.showAlertRedirect("Request", "Done", response.data.redirect, $event);
                 }
             }, function (response) {
                 ctrl.showAlert("Error", "Unable to send your request. Please come later", $event);
