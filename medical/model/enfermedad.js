@@ -13,7 +13,7 @@ var EnfermedadUsuario = new Schema(
     }
 );
 
-// Virtual for movie's URL
+// Virtual for disease's URL
 EnfermedadUsuario
     .virtual('url')
     .get(function () {

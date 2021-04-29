@@ -8,7 +8,7 @@ var AreaMedica = new Schema(
     }
 );
 
-// Virtual for movie's URL
+// Virtual for area's URL
 AreaMedica
     .virtual('url')
     .get(function () {

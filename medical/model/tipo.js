@@ -8,7 +8,7 @@ var TipoUsuario = new Schema(
     }
 );
 
-// Virtual for movie's URL
+// Virtual for tipo's URL
 TipoUsuario
     .virtual('url')
     .get(function () {

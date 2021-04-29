@@ -12,7 +12,7 @@ var Reporte = new Schema(
     }
 );
 
-// Virtual for movie's URL
+// Virtual for report's URL
 Reporte
     .virtual('url')
     .get(function () {

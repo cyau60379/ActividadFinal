@@ -18,7 +18,7 @@ var Usuario = new Schema(
     }
 );
 
-// Virtual for movie's URL
+// Virtual for user's URL
 Usuario
     .virtual('url')
     .get(function () {
