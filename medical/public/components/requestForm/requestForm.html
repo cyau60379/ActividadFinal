@@ -1,0 +1,18 @@
+<form name="appForm" class="appForm">
+  <span class="md-headline">{{$ctrl.ftype | uppercase}} FORM</span>
+  <div layout-gt-xs="row" ng-repeat="formElement in $ctrl.inputs">
+    <md-input-container ng-if="!formElement.select" class="md-block" flex-gt-xs>
+      <label>{{formElement.name | uppercase}}</label>
+      <input multiple ng-disabled="!formElement.updatable" ng-required="true" min="0" md-no-asterisk type="{{formElement.type}}" ng-model="datos[formElement.id]" name="{{formElement.id}}" ng-keyup="$ctrl.enableButton()" ng-focus="$ctrl.enableButton()">
+    </md-input-container>
+    <md-input-container ng-if="formElement.select" class="md-block" flex-gt-xs>
+      <label>{{formElement.name | uppercase}}</label>
+      <md-select ng-disabled="!formElement.updatable" placeholder="{{formElement.name | uppercase}}" ng-model="datos[formElement.id]">
+        <md-option ng-value="selectedValue" ng-repeat="selectedValue in formElement.selectValue">{{selectedValue}}</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <div style="text-align: end;">
+    <md-button ng-disabled="!enabled" class="md-raised md-primary" ng-click='$ctrl.sendData($event)'>{{$ctrl.ftype}}</md-button>
+  </div>
+</form>

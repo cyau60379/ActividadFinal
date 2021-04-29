@@ -1,2 +1,8 @@
 .idea
 medical/sessions/*.json
+medical/public/images/uploads/*.png
+medical/public/images/uploads/*.PNG
+medical/public/images/uploads/*.JPG
+medical/public/images/uploads/*.JPEG
+medical/public/images/uploads/*.jpg
+medical/public/images/uploads/*.jpeg

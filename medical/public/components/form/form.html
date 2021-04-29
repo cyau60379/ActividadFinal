@@ -1,9 +1,15 @@
 <form name="appForm" class="appForm">
     <span class="md-headline">{{$ctrl.ftype | uppercase}} FORM</span>
     <div layout-gt-xs="row" ng-repeat="formElement in $ctrl.inputs">
-        <md-input-container class="md-block" flex-gt-xs>
+        <md-input-container ng-if="!formElement.select" class="md-block" flex-gt-xs>
             <label>{{formElement.name | uppercase}}</label>
             <input ng-required="true" min="0" md-no-asterisk type="{{formElement.type}}" ng-model="datos[formElement.name]" name="{{formElement.name}}" ng-keyup="$ctrl.enableButton()">
+        </md-input-container>
+        <md-input-container ng-if="formElement.select" class="md-block" flex-gt-xs>
+            <label>{{formElement.name | uppercase}}</label>
+            <md-select placeholder="{{formElement.name | uppercase}}" ng-model="datos[formElement.name]">
+                <md-option ng-value="selectedValue" ng-repeat="selectedValue in formElement.selectValue">{{selectedValue}}</md-option>
+            </md-select>
         </md-input-container>
     </div>
     <div style="text-align: end;">
