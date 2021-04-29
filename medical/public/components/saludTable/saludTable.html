@@ -6,11 +6,11 @@
                 <h4>{{item.date}}</h4>
                 <p>{{item.statusmes}}</p>
             </div>
-            <md-button ng-if="!item.status" class="md-raised md-secondary" ng-click="$ctrl.showDetails(item, $event)">
+            <md-button ng-if="item.status" class="md-raised md-secondary" ng-click="$ctrl.showDetails(item, $event)">
                 more details
             </md-button>
             <md-divider ng-if="!$last"></md-divider>
-            <dialog ng-if="!item.status" title="item.disease"></dialog>
+            <dialog ng-if="item.status" title="item.disease"></dialog>
         </md-list-item>
     </md-list>
 </md-content>
