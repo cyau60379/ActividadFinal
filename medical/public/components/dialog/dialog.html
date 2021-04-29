@@ -15,7 +15,7 @@
         </p>
         <h3>Documents</h3>
         <div>
-          <a ng-repeat="a in item.analysis" href="images/uploads/3ce9727d0502722eb93fe5c95fdfcf824aba949b827312a8f70bbc6400253114_2021429_Rhume.jpg" download="{{a.name}}">
+          <a ng-repeat="a in item.analysis" href="{{a.path}}" download="{{a.name}}">
             <md-icon md-svg-icon="doc" class="icon" style="color:#000;" aria-label="Home"></md-icon>
           </a>
         </div>
