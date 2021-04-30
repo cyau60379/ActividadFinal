@@ -121,7 +121,10 @@ function createUsers(cb) {
     async.parallel([
             function (callback) {
                 userCreate('3ce9727d0502722eb93fe5c95fdfcf824aba949b827312a8f70bbc6400253114', 'badb41cf2f3d81acc0cacc2e8fdfcd03e62cb24316019a8d788d0a4f9c1e19e8', 'Bob', 'Lennon', 32, 'H', 'Suisse', 'Genève', tipos[0], areas[0], callback);
-            }
+            },
+            function (callback) {
+                userCreate('15a03dd26688efaba3f212aef6a8ec4fff1fd192d33763d4c126a9e4f4c9a1fe', 'badb41cf2f3d81acc0cacc2e8fdfcd03e62cb24316019a8d788d0a4f9c1e19e8', 'Joshua', 'Cox', 50, 'H', 'USA', 'Los Santos', tipos[1], areas[1], callback);
+            },
         ],
         // optional callback
         cb);
