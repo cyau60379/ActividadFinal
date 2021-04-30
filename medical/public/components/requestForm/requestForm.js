@@ -12,18 +12,27 @@ function requestFormController($scope, $http, $mdDialog, $window) {
                 if (response.data === "wrong") {
                     console.log("Error: data not found");
                 } else {
-                    ctrl.inputs.push({id: "name", name: "name", type: "text", value: response.data.name, select: false, updatable: false});
-                    ctrl.inputs.push({id: "surname", name: "surname", type: "text", value: response.data.surname, select: false, updatable: false});
-                    ctrl.inputs.push({id: "sex", name: "sex", type: "text", value: response.data.sex, select: true, selectValue: ['H', 'M'], updatable: false});
-                    ctrl.inputs.push({id: "age", name: "age", type: "number", value: response.data.age, select: false, updatable: false});
-                    ctrl.inputs.push({id: "address", name: "address", type: "text", value: response.data.address, select: false, updatable: false});
-                    ctrl.inputs.push({id: "city", name: "city", type: "text", value: response.data.city, select: false, updatable: false});
-                    ctrl.inputs.push({id: "disease", name: "disease", type: "text", select: false, updatable: true});
-                    ctrl.inputs.push({id: "images", name: "images", type: "file", select: false, updatable: true});
-                    ctrl.inputs.push({id: "symptoms", name: "symptoms", type: "text", select: false, updatable: true});
-                    ctrl.inputs.push({id: "duration", name: "duration(days)", type: "number", value: 0, select: false, updatable: true});
+                    ctrl.inputs.push([
+                        {id: "name", name: "name", type: "text", value: response.data.name, select: false, updatable: false},
+                        {id: "surname", name: "surname", type: "text", value: response.data.surname, select: false, updatable: false}
+                    ]);
+                    ctrl.inputs.push([
+                        {id: "sex", name: "sex", type: "text", value: response.data.sex, select: true, selectValue: ['H', 'M'], updatable: false},
+                        {id: "age", name: "age", type: "number", value: response.data.age, select: false, updatable: false}
+                    ]);
+                    ctrl.inputs.push([{id: "address", name: "address", type: "text", value: response.data.address, select: false, updatable: false},
+                        {id: "city", name: "city", type: "text", value: response.data.city, select: false, updatable: false}
+                    ]);
+                    ctrl.inputs.push([{id: "disease", name: "disease", type: "text", select: false, updatable: true},
+                        {id: "images", name: "images", type: "file", select: false, updatable: true}
+                    ]);
+                    ctrl.inputs.push([{id: "symptoms", name: "symptoms", type: "text", select: false, updatable: true},
+                        {id: "duration", name: "duration(days)", type: "number", value: 0, select: false, updatable: true}]
+                    );
                     for (let i = 0; i < ctrl.inputs.length; i++) {
-                        $scope.datos[ctrl.inputs[i].name] = ctrl.inputs[i].value;
+                        for (let j = 0; j < ctrl.inputs[i].length; j++) {
+                            $scope.datos[ctrl.inputs[i][j].name] = ctrl.inputs[i][j].value;
+                        }
                     }
                 }
             }, function (response) {

@@ -1,12 +1,12 @@
 <form name="appForm" class="appForm">
     <span class="md-headline" ng-if="updating">{{$ctrl.ftype | uppercase}} FORM</span>
     <span class="md-headline" ng-if="!updating">INFORMATION</span>
-    <div layout-gt-xs="row" ng-repeat="formElement in $ctrl.inputs">
-        <md-input-container ng-if="updating" class="md-block" flex-gt-xs>
+    <div layout-gt-sm="row" ng-repeat="formElements in $ctrl.inputs">
+        <md-input-container ng-repeat="formElement in formElements" flex="formElement.flex" ng-if="updating" class="md-block" flex="50">
             <label>{{formElement.name | uppercase}}</label>
             <input ng-required="true" min="0" md-no-asterisk type="{{formElement.type}}" ng-model="datos[formElement.name]" name="{{formElement.name}}" value="{{formElement.value}}" ng-keyup="$ctrl.enableButton()">
         </md-input-container>
-        <md-input-container ng-if="!updating" class="md-block" flex-gt-xs>
+        <md-input-container ng-repeat="formElement in formElements" flex="formElement.flex" ng-if="!updating && formElement.type != 'password'" class="md-block" flex-gt-sm>
             <label>{{formElement.name | uppercase}}</label>
             <input disabled min="0" md-no-asterisk type="{{formElement.type}}" ng-model="datos[formElement.name]" name="{{formElement.name}}" value="{{formElement.value}}">
         </md-input-container>

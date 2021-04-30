@@ -69,8 +69,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 }
 
 .appForm {
-    width: 500px;
-    margin: 50px auto;
+    margin: 30px auto;
 }
 
 .md-button.md-primary.md-raised, .sign-out {
@@ -110,10 +109,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
 .margin-auto {
     margin: auto;
-}
-
-.table-content {
-    width: 60vw;
+    width: 70vw;
 }
 
 .table-item {

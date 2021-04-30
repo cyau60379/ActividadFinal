@@ -15,18 +15,16 @@ function dynamicFormController($scope, $http, $mdDialog, $window) {
                         if (response.data === "wrong") {
                             console.log("Error: data not found");
                         } else {
-                            ctrl.inputs.push({name: "email", type: "text", value: response.data.email});
-                            ctrl.inputs.push({name: "password", type: "password", value: ""});
-                            ctrl.inputs.push({name: "confirmation", type: "password", value: ""});
-                            ctrl.inputs.push({name: "name", type: "text", value: response.data.name});
-                            ctrl.inputs.push({name: "surname", type: "text", value: response.data.surname});
-                            ctrl.inputs.push({name: "sex", type: "text", value: response.data.sex});
-                            ctrl.inputs.push({name: "age", type: "number", value: response.data.age});
-                            ctrl.inputs.push({name: "address", type: "text", value: response.data.address});
-                            ctrl.inputs.push({name: "city", type: "text", value: response.data.city});
+                            ctrl.inputs.push([{name: "email", type: "text", value: response.data.email, flex: 100}]);
+                            ctrl.inputs.push([{name: "password", type: "password", value: "", flex: 50},{name: "confirmation", type: "password", value: "", flex: 50}]);
+                            ctrl.inputs.push([{name: "name", type: "text", value: response.data.name, flex: 50}, {name: "surname", type: "text", value: response.data.surname, flex: 50}]);
+                            ctrl.inputs.push([{name: "sex", type: "text", value: response.data.sex, flex: 50}, {name: "age", type: "number", value: response.data.age, flex: 50}]);
+                            ctrl.inputs.push([{name: "address", type: "text", value: response.data.address, flex: 50}, {name: "city", type: "text", value: response.data.city, flex: 50}]);
                             ctrl.button = "modify";
                             for (let i = 0; i < ctrl.inputs.length; i++) {
-                                $scope.datos[ctrl.inputs[i].name] = ctrl.inputs[i].value;
+                                for (let j = 0; j < ctrl.inputs[i].length; j++) {
+                                    $scope.datos[ctrl.inputs[i][j].name] = ctrl.inputs[i][j].value;
+                                }
                             }
                         }
                     }, function (response) {
