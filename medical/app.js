@@ -8,7 +8,7 @@ var logger = require('morgan');
 const {exec} = require('child_process');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/users');  // TODO: create route for admin?
 
 var app = express();
 

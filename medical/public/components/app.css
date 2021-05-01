@@ -113,8 +113,12 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 }
 
 .table-item {
-    box-shadow: 0 0 5px 1px rgba(0,0,0,.26);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, .26);
     width: 80%;
     margin: auto;
-    border: solid thin rgba(0,0,0,0.12);
+    border: solid thin rgba(0, 0, 0, 0.12);
+}
+
+.angular-google-map-container {
+    height: 400px;
 }

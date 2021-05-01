@@ -25,6 +25,9 @@ router.post('/update', jsonParser, connection.verificationSession, connection.up
 /* POST get info of the user */
 router.post('/getInfo', jsonParser, connection.verificationSession, user.getInfo);
 
+/* POST get addresses of the users */
+router.post('/getAddresses', jsonParser, connection.verificationSession, user.getAddresses);
+
 /* POST get response for the user */
 router.post('/getResponse', jsonParser, connection.verificationSession, response.getResponse);
 

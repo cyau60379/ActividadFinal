@@ -1,4 +1,4 @@
-var componentApp = angular.module('componentApp', ['ngMaterial', 'ngMessages', 'ngRoute']);
+var componentApp = angular.module('componentApp', ['ngMaterial', 'ngMessages', 'ngRoute', 'ngMap']);
 
 componentApp.config(function ($mdIconProvider) {
     // Add icon in the mdIconProvider with the identifier to be used in md-svg-icon
