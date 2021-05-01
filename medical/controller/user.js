@@ -1,5 +1,6 @@
 var User = require('../model/usuario');
 var Tipo = require('../model/tipo');
+var Disease = require('../model/enfermedad');
 
 exports.getInfo = function (req, res, next) {
     var query = User.find({'email': req.session.user});
@@ -43,4 +44,33 @@ exports.getAddresses = function (req, res, next) {
             }
         });
     });
-};
+}
+
+exports.getDiseases = function (req, res, next) {
+    var d = new Date();
+    console.log(d);
+    d.setDate(d.getDate() - 30);  //from last month to now
+    var iso = d.toISOString();
+    console.log(d);
+    console.log(iso);
+    Disease.find({fecha: {$gt: iso}}).exec(function (err, diseases) {
+        if (err)
+            return next(err);
+        var count = 0;
+        var users = [];
+        var dis = [];
+        for (let i = 0; i < diseases.length; i++) {
+            dis.push(diseases[i].nombre);
+            if (!users.includes(diseases[i].paciente.toString())) {
+                users.push(diseases[i].paciente.toString());
+                count++;
+            }
+        }
+        var result = {
+            diseases: dis,
+            num: count,
+            //users: users
+        };
+        res.send(result);
+    });
+}

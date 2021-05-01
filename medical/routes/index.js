@@ -28,6 +28,9 @@ router.post('/getInfo', jsonParser, connection.verificationSession, user.getInfo
 /* POST get addresses of the users */
 router.post('/getAddresses', jsonParser, connection.verificationSession, user.getAddresses);
 
+/* POST get diseases of the users */
+router.post('/getDiseases', jsonParser, connection.verificationSession, user.getDiseases);
+
 /* POST get response for the user */
 router.post('/getResponse', jsonParser, connection.verificationSession, response.getResponse);
 

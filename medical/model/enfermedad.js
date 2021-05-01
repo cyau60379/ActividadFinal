@@ -8,7 +8,7 @@ var EnfermedadUsuario = new Schema(
         duracion: {type: Number, required: true},
         sintomas: [{type: String, maxlength: 200}],
         imagenes: [{type: Object}],
-        fecha: {type: Date, required: true, default: Date.now()},
+        fecha: {type: Date, required: true, default: Date.now()}, // TODO: initial + end ?
         paciente: {type: Schema.Types.ObjectId, ref: 'Usuario', required: true}
     }
 );

@@ -109,6 +109,9 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
 .margin-auto {
     margin: auto;
+}
+
+.only-element {
     width: 70vw;
 }
 
@@ -119,6 +122,22 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
     border: solid thin rgba(0, 0, 0, 0.12);
 }
 
-.angular-google-map-container {
-    height: 400px;
+.map {
+    display: block;
+    height: 70vh;
+    width: 50vw;
+}
+
+.home-doc {
+    display: grid;
+    width: 80vw;
+    grid-template-areas: 'infoPac gmap' 'infoPac gmap';
+}
+
+.infoPac {
+    grid-area: infoPac;
+}
+
+.gmap {
+    grid-area: gmap;
 }

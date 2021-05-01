@@ -1,4 +1,4 @@
-<ng-map zoom="11" center="[{{$ctrl.pts[0].lat}}, {{$ctrl.pts[0].lng}}]">
+<ng-map class="map margin-auto" zoom="11" center="[{{$ctrl.pts[0].lat}}, {{$ctrl.pts[0].lng}}]">
     <marker ng-repeat="point in $ctrl.pts" position="[{{point.lat}}, {{point.lng}}]"/>
     <control name="overviewMap" opened="true"/>
 </ng-map>
