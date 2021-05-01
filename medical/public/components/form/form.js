@@ -10,21 +10,29 @@ function formController($scope, $http, $mdDialog, $window) {
     ctrl.fillInputs = function (type) {
         switch (type) {
             case "connection":
-                ctrl.inputs.push({name: "email", type: "text", select: false});
-                ctrl.inputs.push({name: "password", type: "password", select: false});
+                ctrl.inputs.push([{name: "email", type: "text", select: false, flex: 100}]);
+                ctrl.inputs.push([{name: "password", type: "password", select: false, flex: 100}]);
                 ctrl.changeForm = true;
                 ctrl.button = "sign up";
                 break;
             case "inscription":
-                ctrl.inputs.push({name: "email", type: "text", select: false});
-                ctrl.inputs.push({name: "password", type: "password", select: false});
-                ctrl.inputs.push({name: "confirmation", type: "password", select: false});
-                ctrl.inputs.push({name: "name", type: "text", select: false});
-                ctrl.inputs.push({name: "surname", type: "text", select: false});
-                ctrl.inputs.push({name: "sex", type: "text", select: true, selectValue: ['H', 'M']});
-                ctrl.inputs.push({name: "age", type: "number", select: false});
-                ctrl.inputs.push({name: "address", type: "text", select: false});
-                ctrl.inputs.push({name: "city", type: "text", select: false});
+                ctrl.inputs.push([{name: "email", type: "text", select: false, flex: 100}]);
+                ctrl.inputs.push([
+                    {name: "password", type: "password", select: false, flex: 50},
+                    {name: "confirmation", type: "password", select: false, flex: 50}
+                ]);
+                ctrl.inputs.push([
+                    {name: "name", type: "text", select: false, flex: 50},
+                    {name: "surname", type: "text", select: false, flex: 50}
+                ]);
+                ctrl.inputs.push([
+                    {name: "sex", type: "text", select: true, selectValue: ['H', 'M'], flex: 50},
+                    {name: "age", type: "number", select: false, flex: 50}
+                ]);
+                ctrl.inputs.push([
+                    {name: "address", type: "text", select: false, flex: 50},
+                    {name: "city", type: "text", select: false, flex: 50}
+                ]);
                 ctrl.changeForm = false;
                 ctrl.button = "sign in";
                 break;
