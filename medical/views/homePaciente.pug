@@ -1,4 +1,8 @@
 extends layout
 
 block content
-    form-app(ftype= "inscription", class="margin-auto only-element")
+    div(class="margin-auto home-doc" style="margin-top: 30px;")
+        account-info(name= username)
+        div(class="main-page-element")
+            h2 Last responses:
+            salud-table(class="margin-auto not-only-element" page= currentpage)

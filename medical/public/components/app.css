@@ -115,6 +115,10 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
     width: 70vw;
 }
 
+.not-only-element {
+    width: 40vw;
+}
+
 .table-item {
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, .26);
     width: 80%;
@@ -140,4 +144,10 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
 .gmap {
     grid-area: gmap;
+}
+
+.main-page-element {
+    border: solid thin rgb(4, 188, 0);
+    border-radius: 10px;
+    padding: 10px;
 }

@@ -9,6 +9,9 @@
             <md-button ng-if="item.status" class="md-raised md-secondary" ng-click="$ctrl.showDetails(item, $event)">
                 more details
             </md-button>
+            <md-button ng-if="$ctrl.currentPage == 'homePaciente'" class="md-raised md-secondary" ng-click="$ctrl.goto()">
+                more details
+            </md-button>
             <md-divider ng-if="!$last"></md-divider>
             <dialog ng-if="item.status" title="item.disease"></dialog>
         </md-list-item>

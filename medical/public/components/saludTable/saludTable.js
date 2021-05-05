@@ -2,6 +2,7 @@ function saludTableController($scope, $http, $mdDialog, $window) {
     var ctrl = this;
 
     ctrl.responses = [];
+    ctrl.currentPage = "";
 
     ctrl.fillInputs = function () {
         $http.post("/getResponse")
@@ -9,17 +10,20 @@ function saludTableController($scope, $http, $mdDialog, $window) {
                 if (response.data === "wrong") {
                     console.log("Error: data not found");
                 } else {
+                    ctrl.currentPage = ctrl.page;
                     for (let i = 0; i < response.data.length; i++) {
-                        ctrl.responses.push({
-                            disease: response.data[i].disease,
-                            date: response.data[i].date.split("T")[0],
-                            status: response.data[i].status,
-                            statusmes: response.data[i].statusmes,
-                            response: response.data[i].res,
-                            doctor: response.data[i].doctor,
-                            resdate: response.data[i].resdate.split("T")[0],
-                            analysis: response.data[i].analysis
-                        });
+                        if (ctrl.page == "respuesta" || (ctrl.page == "homePaciente" && response.data[i].status)) {
+                            ctrl.responses.push({
+                                disease: response.data[i].disease,
+                                date: response.data[i].date.split("T")[0],
+                                status: response.data[i].status,
+                                statusmes: response.data[i].statusmes,
+                                response: response.data[i].res,
+                                doctor: response.data[i].doctor,
+                                resdate: response.data[i].resdate.split("T")[0],
+                                analysis: response.data[i].analysis
+                            });
+                        }
                     }
                 }
             }, function (response) {
@@ -56,6 +60,10 @@ function saludTableController($scope, $http, $mdDialog, $window) {
         });
     };
 
+    ctrl.goto = function () {
+        $window.location.href = "/respuesta";
+    }
+
     ctrl.$onInit = function () {
         ctrl.fillInputs();
     }
@@ -63,7 +71,7 @@ function saludTableController($scope, $http, $mdDialog, $window) {
 
 componentApp.component("saludTable", {
     bindings: {
-        ftype: '@'
+        page: '@'
     },
     templateUrl: "components/saludTable/saludTable.html",
     controller: saludTableController
