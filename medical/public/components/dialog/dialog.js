@@ -27,7 +27,7 @@ function dialogController($scope, $mdDialog, $http, $window, diagdata) {
                     console.log("Unable to send your request. Please come later");
                 } else {
                     $mdDialog.cancel();
-                    //$window.location.reload();
+                    $window.location.reload();
                 }
             }, function (response) {
                 console.log("Unable to send your request. Please come later");

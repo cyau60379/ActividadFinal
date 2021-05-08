@@ -24,6 +24,20 @@
                     </md-input-container>
                 </div>
                 <div layout-gt-xs="row">
+                    <md-input-container ng-repeat="(key, value) in item.disease_info" ng-if="key != 'img'" class="md-block" flex-gt-xs>
+                        <label>{{key}}</label>
+                        <input disabled type="text" value="{{value}}">
+                    </md-input-container>
+                </div>
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <h3>Patient images</h3>
+                        <a ng-repeat="a in item.disease_info.img" href="{{a.path}}" download="{{a.name}}">
+                            <md-icon md-svg-icon="doc" class="icon" style="color:#000;" aria-label="Home"></md-icon>
+                        </a>
+                    </md-input-container>
+                </div>
+                <div layout-gt-xs="row">
                     <md-input-container class="md-block" flex-gt-xs>
                         <label>Response</label>
                         <textarea ng-model="item.response" md-maxlength="200" rows="5"

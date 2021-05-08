@@ -9,6 +9,7 @@ exports.request = function (req, res, next) {
         if (err) {
             return res.status(400).json({error: err.message});
         }
+        var data = JSON.parse(fields.data);
         var images = fct.buildDocTable(files, data, req, []);
 
         User.find({'email': req.session.user}).exec(function (err, user) {

@@ -1,6 +1,5 @@
 var User = require('../model/usuario');
 var Enfermedad = require('../model/enfermedad');
-var Report = require('../model/reporte');
 
 exports.getResponse = function (req, res, next) {
     User.find({'email': req.session.user}).exec(function (err, user) {
@@ -35,10 +34,10 @@ exports.getResponse = function (req, res, next) {
                                 date: enfermedades[i].fecha,
                                 status: status,
                                 statusmes: statusMessage,
-                                response: enfermedades[i].reports.respuesta,
-                                doctor: enfermedades[i].reports.medico,
-                                resdate: enfermedades[i].reports.fecha,
-                                analysis: enfermedades[i].reports.analisis
+                                response: enfermedades[i].reports[0].respuesta,
+                                doctor: enfermedades[i].reports[0].medico,
+                                resdate: enfermedades[i].reports[0].fecha,
+                                analysis: enfermedades[i].reports[0].analisis
                             }
                         )
                     } else {

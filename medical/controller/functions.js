@@ -1,5 +1,6 @@
 var path = require('path');
 var fs = require('fs');
+var sha256 = require('js-sha256').sha256;
 
 exports.buildDocTable = function (files, data, req, images) {
     for (let i = 0; i < Object.keys(files).length; i++) {
@@ -15,4 +16,18 @@ exports.buildDocTable = function (files, data, req, images) {
         images.push(relativePath);
     }
     return images;
+}
+
+exports.encrypt = function (element) {
+    var hash = sha256.create();
+    try {
+        hash.update(element);
+        return hash.hex();
+    } catch (e) {
+        throw e;
+    }
+}
+
+exports.compare = function (compared, comparator) {
+    return compared === comparator;
 }

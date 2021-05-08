@@ -1,6 +1,7 @@
 var User = require('../model/usuario');
 var Tipo = require('../model/tipo');
 var Disease = require('../model/enfermedad');
+var fct = require("./functions");
 
 exports.getInfo = function (req, res, next) {
     var query = User.find({'email': req.session.user});
@@ -22,6 +23,32 @@ exports.getInfo = function (req, res, next) {
         } catch (e) {
             console.log(e);
             res.send("wrong");
+        }
+    });
+}
+
+exports.update = function (req, res, next) {
+    var hashedMail = fct.encrypt(req.body.email);
+    var hashedPwd = fct.encrypt(req.body.password);
+    var newUser = {
+        email: hashedMail,
+        password: hashedPwd,
+        nombre: req.body.name,
+        apellido: req.body.surname,
+        edad: req.body.age,
+        sexo: req.body.sex,
+        domicilio: req.body.address,
+        ciudad: req.body.city
+    }
+
+    User.updateOne({email: req.session.user}, {$set: newUser}, function(err, result) {
+        if (err) {
+            res.send("wrong");
+        } else {
+            req.session.user = hashedMail;
+            req.session.email = req.body.email;
+            req.session.name = req.body.name + " " + req.body.surname;
+            res.end();
         }
     });
 }

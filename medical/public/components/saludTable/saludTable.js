@@ -10,6 +10,7 @@ function saludTableController($scope, $http, $mdDialog, $window) {
                 if (response.data === "wrong") {
                     console.log("Error: data not found");
                 } else {
+                    console.log(response.data);
                     ctrl.currentPage = ctrl.page;
                     for (let i = 0; i < response.data.length; i++) {
                         if (ctrl.page == "respuesta" || (ctrl.page == "homePaciente" && response.data[i].status)) {
@@ -48,7 +49,7 @@ function saludTableController($scope, $http, $mdDialog, $window) {
             fullscreen: $scope.customFullscreen,
             locals: {
                 diagdata: {
-                    res: item.response,
+                    response: item.response,
                     doctor: item.doctor,
                     resdate: item.resdate,
                     analysis: analysis,

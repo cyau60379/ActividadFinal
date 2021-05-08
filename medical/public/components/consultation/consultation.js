@@ -21,6 +21,9 @@ function consultationController($scope, $http, $mdDialog) {
                                         disease_id: response.data[i].disease_id,
                                         disease: response.data[i].disease,
                                         date: response.data[i].date.split("T")[0],
+                                        duration: response.data[i].duration,
+                                        symptoms: response.data[i].symptoms,
+                                        img: response.data[i].img,
                                         patient_name: res.data.name,
                                         patient_age: res.data.age,
                                         patient_sex: res.data.sex,
@@ -51,6 +54,13 @@ function consultationController($scope, $http, $mdDialog) {
                 })
             }
         }
+        var imgs = [];
+        for (let i = 0; i < item.img.length; i++) {
+            imgs.push({
+                path: item.img[i],
+                name: "patient_document_" + item.img[i].split('.')[1],
+            })
+        }
         console.log(item);
         $mdDialog.show({
             controller: dialogController,
@@ -62,6 +72,11 @@ function consultationController($scope, $http, $mdDialog) {
             locals: {
                 diagdata: {
                     disease_id: item.disease_id,
+                    disease_info: {
+                        duration: item.duration,
+                        symptoms: item.symptoms,
+                        img: imgs,
+                    },
                     patient: {
                         name: item.patient_name,
                         age: item.patient_age,

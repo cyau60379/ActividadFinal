@@ -22,7 +22,7 @@ router.post('/connection', jsonParser, connection.connection);
 router.post('/inscription', jsonParser, connection.inscription);
 
 /* POST update the user */
-router.post('/update', jsonParser, connection.verificationSession, connection.update);
+router.post('/update', jsonParser, connection.verificationSession, user.update);
 
 /* POST get info of the user */
 router.post('/getInfo', jsonParser, connection.verificationSession, user.getInfo);
