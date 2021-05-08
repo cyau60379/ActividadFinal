@@ -1,0 +1,56 @@
+<md-dialog aria-label="Report" style="width: 90%">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{item.disease}}</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div layout-gt-xs="row">
+                    <md-input-container ng-repeat="(key, value) in item.patient"
+                                        ng-if="key != 'sex' && key != 'address'" flex="50" class="md-block" flex-gt-xs>
+                        <label>{{key}}</label>
+                        <input disabled type="text" value="{{value}}">
+                    </md-input-container>
+                </div>
+                <div layout-gt-xs="row">
+                    <md-input-container ng-repeat="(key, value) in item.patient"
+                                        ng-if="key != 'name' && key != 'age'" flex="50" class="md-block" flex-gt-xs>
+                        <label>{{key}}</label>
+                        <input disabled type="text" value="{{value}}">
+                    </md-input-container>
+                </div>
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Response</label>
+                        <textarea ng-model="item.response" md-maxlength="200" rows="5"
+                                  md-select-on-focus>{{item.response}}</textarea>
+                    </md-input-container>
+                </div>
+                <h3>Documents</h3>
+                <div>
+                    <a ng-repeat="a in item.analysis" href="{{a.path}}" download="{{a.name}}">
+                        <md-icon md-svg-icon="doc" class="icon" style="color:#000;" aria-label="Home"></md-icon>
+                    </a>
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>New files</label>
+                        <input multiple type="file" ng-model="files" id="file">
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="cancel()">
+                close
+            </md-button>
+            <md-button class="md-raised md-primary" ng-click="send()">
+                send
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

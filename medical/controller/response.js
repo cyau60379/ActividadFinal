@@ -13,7 +13,7 @@ exports.getResponse = function (req, res, next) {
             },
             { $lookup:
                     {
-                        from: 'Reporte',
+                        from: 'reportes',
                         localField: '_id',
                         foreignField: 'enfermedad',
                         as: 'reports'

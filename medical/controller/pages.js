@@ -25,3 +25,8 @@ exports.respuesta = function (req, res, next) {
     req.session.page = 'respuesta';
     res.render(req.session.page, {user: req.session.type, currentpage: req.session.page, username: req.session.name});
 };
+
+exports.consulta = function (req, res, next) {
+    req.session.page = 'consulta';
+    res.render(req.session.page, {user: req.session.type, currentpage: req.session.page, username: req.session.name});
+};

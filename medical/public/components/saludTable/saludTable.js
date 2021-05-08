@@ -18,7 +18,7 @@ function saludTableController($scope, $http, $mdDialog, $window) {
                                 date: response.data[i].date.split("T")[0],
                                 status: response.data[i].status,
                                 statusmes: response.data[i].statusmes,
-                                response: response.data[i].res,
+                                response: response.data[i].response,
                                 doctor: response.data[i].doctor,
                                 resdate: response.data[i].resdate.split("T")[0],
                                 analysis: response.data[i].analysis
@@ -48,7 +48,7 @@ function saludTableController($scope, $http, $mdDialog, $window) {
             fullscreen: $scope.customFullscreen,
             locals: {
                 diagdata: {
-                    response: item.res,
+                    res: item.response,
                     doctor: item.doctor,
                     resdate: item.resdate,
                     analysis: analysis,
