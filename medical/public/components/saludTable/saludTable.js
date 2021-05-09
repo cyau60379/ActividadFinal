@@ -13,7 +13,25 @@ function saludTableController($scope, $http, $mdDialog, $window) {
                     console.log(response.data);
                     ctrl.currentPage = ctrl.page;
                     for (let i = 0; i < response.data.length; i++) {
-                        if (ctrl.page == "respuesta" || (ctrl.page == "homePaciente" && response.data[i].status)) {
+                        if (ctrl.page == "respuesta" && response.data[i].doctor !== 'void' || (ctrl.page == "homePaciente" && response.data[i].status)) {
+                            $http.post("/getInfo", JSON.stringify({user: response.data[i].doctor}))
+                                .then(function (res) {
+                                    if (res.data === "wrong") {
+                                        console.log("Error: data not found");
+                                    } else {
+                                        ctrl.responses.push({
+                                            disease: response.data[i].disease,
+                                            date: response.data[i].date.split("T")[0],
+                                            status: response.data[i].status,
+                                            statusmes: response.data[i].statusmes,
+                                            response: response.data[i].response,
+                                            doctor: res.data.name + " " + res.data.surname,
+                                            resdate: response.data[i].resdate.split("T")[0],
+                                            analysis: response.data[i].analysis
+                                        });
+                                    }
+                                });
+                        } else if (ctrl.page == "respuesta") {
                             ctrl.responses.push({
                                 disease: response.data[i].disease,
                                 date: response.data[i].date.split("T")[0],
@@ -36,8 +54,9 @@ function saludTableController($scope, $http, $mdDialog, $window) {
         var analysis = [];
         for (let i = 0; i < item.analysis.length; i++) {
             analysis.push({
-                path: item.analysis[i],
-                name: "document" + item.analysis[i].split('.')[1],
+                path: item.analysis[i].path,
+                date: item.analysis[i].date,
+                name: "document" + item.analysis[i].path.split('.')[1],
             })
         }
         $mdDialog.show({

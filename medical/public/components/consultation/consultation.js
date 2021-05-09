@@ -49,16 +49,18 @@ function consultationController($scope, $http, $mdDialog) {
         if (item.analysis !== 'void') {
             for (let i = 0; i < item.analysis.length; i++) {
                 analysis.push({
-                    path: item.analysis[i],
-                    name: "document" + item.analysis[i].split('.')[1],
+                    path: item.analysis[i].path,
+                    date: item.analysis[i].date,
+                    name: "document" + item.analysis[i].path.split('.')[1],
                 })
             }
         }
         var imgs = [];
         for (let i = 0; i < item.img.length; i++) {
             imgs.push({
-                path: item.img[i],
-                name: "patient_document_" + item.img[i].split('.')[1],
+                path: item.img[i].path,
+                date: item.img[i].date,
+                name: "patient_document_" + item.img[i].path.split('.')[1],
             })
         }
         console.log(item);

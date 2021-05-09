@@ -10,9 +10,13 @@ exports.insert = function (req, res, next) {
             return res.status(400).json({error: err.message});
         }
         var images0 = [];
+        var today = new Date();
         var data = JSON.parse(fields.data);
         for (let j = 0; j < data.analysis.length; j++) {
-            images0.push(data.analysis[j].path);
+            images0.push({
+                path: data.analysis[j].path,
+                date: today.toDateString()
+            });
         }
 
         var images = fct.buildDocTable(files, data, req, images0);

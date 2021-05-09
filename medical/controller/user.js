@@ -4,7 +4,11 @@ var Disease = require('../model/enfermedad');
 var fct = require("./functions");
 
 exports.getInfo = function (req, res, next) {
-    var query = User.find({'email': req.session.user});
+    var filter = {'email': req.session.user};
+    if (req.body.user !== undefined) {
+        filter = {'_id': req.body.user};
+    }
+    var query = User.find(filter);
     query.limit(1);
     query.exec(function (err, user) {
         if (err)

@@ -151,3 +151,11 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
     border-radius: 10px;
     padding: 10px;
 }
+
+.doc {
+    display: inline-block;
+    border: solid thin rgba(0, 0, 0, 0.12);
+    color: rgb(4, 188, 0);
+    width: 25%;
+    margin: 2px;
+}

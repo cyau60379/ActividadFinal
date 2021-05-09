@@ -13,7 +13,10 @@ exports.buildDocTable = function (files, data, req, images) {
         var newPath = path.join(__dirname, '../public/images/uploads/') + filename;
         var rawData = fs.readFileSync(oldPath);
         fs.writeFileSync(newPath, rawData);
-        images.push(relativePath);
+        images.push({
+            path: relativePath,
+            date: today.toDateString()
+        });
     }
     return images;
 }

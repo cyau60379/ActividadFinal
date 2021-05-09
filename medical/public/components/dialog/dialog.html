@@ -9,14 +9,15 @@
 
     <md-dialog-content>
       <div class="md-dialog-content">
-        <h3>Response</h3>
+        <h3>Response from Dr. {{item.doctor}}</h3>
         <p>
           {{item.response}}
         </p>
         <h3>Documents</h3>
         <div>
-          <a ng-repeat="a in item.analysis" href="{{a.path}}" download="{{a.name}}">
+          <a class="doc" ng-repeat="a in item.analysis" href="{{a.path}}" download="{{a.name}}">
             <md-icon md-svg-icon="doc" class="icon" style="color:#000;" aria-label="Home"></md-icon>
+            {{a.date}}
           </a>
         </div>
       </div>
